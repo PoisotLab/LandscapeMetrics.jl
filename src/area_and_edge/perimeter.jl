@@ -3,6 +3,7 @@
 
 Other keyword arguments are passed to `patches`.
 """
+
 function perimeter(l::Landscape, patch)
 
     # We get the patches
@@ -27,7 +28,7 @@ function perimeter(l::Landscape, patch)
     # The neighbour X would be counted twice because it has two edges with cells from the
     # patch
 
-    # We remove the cells that are not in the landscaoe itself
+    # We remove the cells that are not in the landscape itself
     filter!(i -> i in CartesianIndices(p), to_check)
 
 
