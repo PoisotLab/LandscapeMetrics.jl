@@ -26,6 +26,10 @@ export patches!, patches
 include("utilities/cellcenters.jl")
 export cellcenters
 
+#Function to get the contiguity value of the cells
+include("utilities/contiguityvalue.jl")
+export contiguityvalue
+
 # Function to get the core areas
 include("utilities/core.jl")
 
