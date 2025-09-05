@@ -51,12 +51,6 @@ export largestpatchindex
 include("area_and_edge/radiusofgyration.jl")
 export radiusofgyration
 
-include("area_and_edge/totaledge.jl")
-export totaledge
-
-include("area_and_edge/edgedensity.jl")
-export edgedensity
-
 # Shape
 include("shape/paratio.jl")
 export paratio, perimeterarearatio
