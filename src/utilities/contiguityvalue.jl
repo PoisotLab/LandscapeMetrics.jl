@@ -4,7 +4,7 @@ template = [
     1 2 1
 ]
 
-function contiguityvalue(l::landscape, template)
+function contiguityvalue(l::Landscape, template)
     nrows, ncols = size(template)
     result = zeros(T, nrows, ncols)
     # Pad the matrix with zeros on all sides
