@@ -34,4 +34,29 @@ Tested: there are unit tests for the method implementation
 | Contrast | Patch | Edge Contrast Index |   |   |
 | Contrast | Class | Contrast-Weighted Edge Density |   |   |
 | Contrast | Class | Total Edge Contrast Index |   |   |
+| Aggregation | Patch | Euclidian Nearest-Neighbor Distance |   |   |  
+| Aggregation | Patch | Proximity Index |   |   |
+| Aggregation | Patch | Similarity Index |   |   |
+| Aggregation | Class | Interspersion and Juxtaposition Index |   |   |
+| Aggregation | Class | Percentage of Like Adjencies |   |   |
+| Aggregation | Class | Aggregation Index |   |   |
+| Aggregation | Class | Clumpiness Index |   |   |
+| Aggregation | Class | Landscape Shape Index |   |   |
+| Aggregation | Class | Normalized Landscape Shape Index |   |   |
+| Aggregation | Class | Patch Cohesion Index |   |   |
+| Aggregation | Class | Number of Patches |   |   |
+| Aggregation | Class | Patch Density |   |   |
+| Aggregation | Class | Landscape Division Index |   |   |
+| Aggregation | Class | Splitting Index |   |   |
+| Aggregation | Class | Effective Mesh Size |   |   |
+| Aggregation | Class | Connectance Index |   |   |
+| Aggregation | Class | Contagion Index |   |   |
+| Diversity | Landscape | Patch Richness |   |   |
+| Diversity | Landscape | Patch Richness Density |   |   |
+| Diversity | Landscape | Shannon's Diversity Index |   |   |
+| Diversity | Landscape | Simpson's Diversity Index |   |   |
+| Diversity | Landscape | Modified Simpson's Diversity Index |   |   |
+| Diversity | Landscape | Shannon's Evenness Index |   |   |
+| Diversity | Landscape | Modified Simpson's Evenness Index |   |   |
+| Cell-Based | Landscape | Conductance Index |   |   |
 
