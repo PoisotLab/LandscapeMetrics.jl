@@ -69,8 +69,6 @@ function minimum_enclosing_circle(points::Vector{Tuple{Float64, Float64}})
 end
 
 
-
-
 @testitem "MEC of one point is a circle of radius 0 at that point" begin
     p = (1.0, 2.0)
     mec = minimum_enclosing_circle([p])
