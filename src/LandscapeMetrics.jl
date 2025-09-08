@@ -26,6 +26,11 @@ export patches!, patches
 include("utilities/cellcenters.jl")
 export cellcenters
 
+# Function for welzl welzl_algorithm
+include("utilities/welzlalgorithm.jl")
+export welzl_algorithm
+
+
 # Function to get the core areas
 include("utilities/core.jl")
 
@@ -46,12 +51,6 @@ export largestpatchindex
 
 include("area_and_edge/radiusofgyration.jl")
 export radiusofgyration
-
-include("area_and_edge/totaledge.jl")
-export totaledge
-
-include("area_and_edge/edgedensity.jl")
-export edgedensity
 
 # Shape
 include("shape/paratio.jl")
