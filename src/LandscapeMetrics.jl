@@ -4,6 +4,7 @@ using TestItems
 using Test
 using StatsBase
 import DelimitedFiles
+using Random
 
 # Patches, generic utilies, and overloads
 include("types.jl")
@@ -26,9 +27,15 @@ export patches!, patches
 include("utilities/cellcenters.jl")
 export cellcenters
 
-# Function for welzl welzl_algorithm
+# Function to identify the minimum enclosing circle of a set of points
 include("utilities/welzlalgorithm.jl")
 export welzl_algorithm
+export minimum_enclosing_circle
+export Circle
+export is_point_in_circle
+export distance
+
+
 
 
 # Function to get the core areas
