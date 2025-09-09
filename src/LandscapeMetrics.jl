@@ -69,6 +69,9 @@ export fractaldimensionindex
 
 include("shape/relatedcircumscribingcircle.jl")
 export related_circumscribing_circle
+export patch_cell_corners
+
+
 
 end # module LandscapeMetrics
 

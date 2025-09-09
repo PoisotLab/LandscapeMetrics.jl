@@ -5,12 +5,33 @@ struct Circle
     radius::Float64
 end
 
+
+"""
+
+    distance(p1::Tuple{Float64, Float64}, p2::Tuple{Float64, Float64})
+
+    Computes the Euclidian distance between two points.
+
+"""
 distance(p1::Tuple{Float64, Float64}, p2::Tuple{Float64, Float64}) =
     sqrt((p1[1] - p2[1])^2 + (p1[2] - p2[2])^2)
 
+"""
+    is_point_in_circle(p::Tuple{Float64, Float64}, c::Circle)
+
+    Checks if point `p` is inside or on the boundary of circle `c`.
+
+"""
 is_point_in_circle(p::Tuple{Float64, Float64}, c::Circle) =
     distance(p, c.center) <= c.radius + 1e-9
 
+"""
+
+    circumcircle(p1, p2, p3)
+
+    Computes the circumcircle of the triangle formed by points `p1`, `p2`, and `p3`.
+
+"""
 function circumcircle(p1, p2, p3)
     A = 2 * (p2[1] - p1[1])
     B = 2 * (p2[2] - p1[2])
@@ -32,6 +53,11 @@ function circumcircle(p1, p2, p3)
     return Circle(center, radius)
 end
 
+"""
+    trivial_circle(P)
+
+    Computes the minimum enclosing circle for 0, 1, 2, or 3 points in `P`.
+"""
 function trivial_circle(P)
     if length(P) == 0
         return Circle((0.0, 0.0), 0.0)
@@ -46,7 +72,13 @@ function trivial_circle(P)
     end
 end
 
-# Recursive helper with index to avoid slicing and repeated random
+"""
+    welzl_helper(P, R, n)
+
+    Recursive helper function for Welzl's algorithm.
+    `P` is the list of points, `R` is the list of points on the boundary,
+    and `n` is the number of points in `P` to consider.
+"""
 function welzl_helper(P::Vector{Tuple{Float64, Float64}}, R::Vector{Tuple{Float64, Float64}}, n::Int)
     if n == 0 || length(R) == 3
         return trivial_circle(R)
@@ -62,7 +94,11 @@ function welzl_helper(P::Vector{Tuple{Float64, Float64}}, R::Vector{Tuple{Float6
     end
 end
 
-# Public API: shuffle points once and call helper
+"""
+    minimum_enclosing_circle(points)
+
+    Computes the minimum enclosing circle for a set of points using Welzl's algorithm.
+"""
 function minimum_enclosing_circle(points::Vector{Tuple{Float64, Float64}})
     Pshuffled = shuffle(copy(points))
     return welzl_helper(Pshuffled, Tuple{Float64, Float64}[], length(Pshuffled))
