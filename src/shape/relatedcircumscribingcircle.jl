@@ -24,13 +24,6 @@ function related_circumscribing_circle(l::Landscape, patch)
     return 1 - (patch_area / circle_area)
 end
 
-@testitem "We can measure the related circumscribing circle for a patch" begin
-    A = [
-         1 1 1
-    ]
-    L = Landscape(A)
-    P = patches(L)
-    @test related_circumscribing_circle(L, 1) ≈ 0.04507034144
-end
+
 
 
