@@ -1,5 +1,6 @@
 using Random
 
+# Structure to represent a circle
 struct Circle
     center::Tuple{Float64, Float64}
     radius::Float64
@@ -100,7 +101,11 @@ end
     Computes the minimum enclosing circle for a set of points using Welzl's algorithm.
 """
 function minimum_enclosing_circle(points::Vector{Tuple{Float64, Float64}})
+
+    # Shuffle the points to ensure random order
     Pshuffled = shuffle(copy(points))
+
+    # Calls the recursive helper function
     return welzl_helper(Pshuffled, Tuple{Float64, Float64}[], length(Pshuffled))
 end
 
