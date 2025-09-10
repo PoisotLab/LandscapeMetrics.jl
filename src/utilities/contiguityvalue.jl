@@ -5,7 +5,7 @@ B = [
 ]
 
 function contiguityvalue(A::AbstractMatrix, B::AbstractMatrix)
-    nrows, ncols = size(B)
+    nrows, ncols = size(A)
     T = eltype(A)
     result = zeros(T, nrows, ncols)
     # Pad the matrix with zeros on all sides
@@ -23,7 +23,8 @@ end
 @testitem "We can calculate the contiguity value of a landscape" begin
     A = [
         1 1;
-        1 1
+        1 1;
+        1 3
     ]
     B = [
     1 2 1;
@@ -32,7 +33,8 @@ end
 ]
     expected = [
         6 6;
-        6 6
+        11 13;
+        10 8
     ]
     @test contiguityvalue(A, B) == expected
 end

@@ -59,5 +59,8 @@ export shapeindex
 include("shape/fractal.jl")
 export fractaldimensionindex
 
+include("shape/contiguityindex.jl")
+export contig_index
+
 end # module LandscapeMetrics
 
