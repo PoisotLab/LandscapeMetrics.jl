@@ -1,8 +1,13 @@
+"""
 
+    perimeterareafractal(l::Landscape, p::Integer)
 
+    Returns the perimeter-area fractal dimension for a given patch in the landscape. 
+    
+"""
 
 function perimeterareafractal(l::Landscape, p::Integer)
-    
+
     @assert p in patches(l)
     pij = perimeter(l, p)
     aij = area(l, p)

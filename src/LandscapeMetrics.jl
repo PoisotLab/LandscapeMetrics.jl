@@ -61,5 +61,8 @@ export shapeindex
 include("shape/fractal.jl")
 export fractaldimensionindex
 
+include("shape/perimeterareafractal.jl")
+export perimeterareafractal
+
 end # module LandscapeMetrics
 
