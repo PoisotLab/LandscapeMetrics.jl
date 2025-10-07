@@ -59,5 +59,8 @@ export fractaldimensionindex
 include("core_area/corearea.jl")
 export core_area
 
+include("core_area/Ncore.jl")
+export ncore
+
 end # module LandscapeMetrics
 

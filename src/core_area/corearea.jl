@@ -51,6 +51,17 @@ end
     @test core_area(L, 1, 1) == 1.0
 end
 
+@testitem "Core area is positive for multi-cell patch with depth 1" begin
+    A = [
+        1 1 1 0 1 1 1;
+        1 1 1 0 1 1 1;
+        1 1 1 1 1 1 1;
+        0 0 0 0 0 0 0 
+    ]
+    L = Landscape(A)
+    @test core_area(L, 1, 1) == 1.0
+end
+
 @testitem "Core area is zero for multi-cell patch with depth 2" begin
     A = [
         0 1 1 1 1;
