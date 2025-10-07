@@ -26,6 +26,10 @@ export patches!, patches
 include("utilities/cellcenters.jl")
 export cellcenters
 
+#Function to get the contiguity value of the cells
+include("utilities/contiguityvalue.jl")
+export contiguityvalue
+
 # Function to get the core areas
 include("utilities/core.jl")
 
@@ -47,12 +51,6 @@ export largestpatchindex
 include("area_and_edge/radiusofgyration.jl")
 export radiusofgyration
 
-include("area_and_edge/totaledge.jl")
-export totaledge
-
-include("area_and_edge/edgedensity.jl")
-export edgedensity
-
 # Shape
 include("shape/paratio.jl")
 export paratio, perimeterarearatio
@@ -60,6 +58,9 @@ export shapeindex
 
 include("shape/fractal.jl")
 export fractaldimensionindex
+
+include("shape/contiguityindex.jl")
+export contig_index
 
 end # module LandscapeMetrics
 
