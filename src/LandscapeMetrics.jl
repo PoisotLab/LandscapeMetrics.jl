@@ -63,5 +63,8 @@ include("area_and_edge/contrast/contrastweightededgedensity.jl")
 export edge_contrast_density
 export class_edge_contrast_index
 
+include("area_and_edge/contrast/totaledgecontrastindex.jl")
+export total_edge_contrast_index
+
 end # module LandscapeMetrics
 
