@@ -76,5 +76,8 @@ export core_area_percentage
 include("core_area/numberofdisjunctcorearea.jl")
 export number_of_disjunct_core_areas
 
+include("core_area/disjunctcoreareadensity.jl")
+export disjunct_core_area_density
+
 end # module LandscapeMetrics
 
