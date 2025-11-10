@@ -58,6 +58,8 @@ export fractaldimensionindex
 # Core Area
 include("core_area/corearea.jl")
 export core_area
+include("core_area/coreareaindex.jl")
+export core_area_index
 
 include("core_area/Ncore.jl")
 export count_core_areas
