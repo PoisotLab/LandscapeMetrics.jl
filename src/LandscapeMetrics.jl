@@ -70,5 +70,8 @@ export count_core_areas
 export flood_fill
 export compute_core_mask
 
+include("core_area/coreareapercentage.jl")
+export core_area_percentage
+
 end # module LandscapeMetrics
 
