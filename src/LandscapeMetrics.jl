@@ -58,6 +58,7 @@ export fractaldimensionindex
 # Contrast
 include("area_and_edge/contrast/edgecontrastindex.jl")
 export perimeter_split_by_class
+export edgecontrastindex
 
 end # module LandscapeMetrics
 
