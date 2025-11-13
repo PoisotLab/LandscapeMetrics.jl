@@ -1,27 +1,23 @@
+ """
+        total_core_area(l::Landscape, depth::Int=0)
+
+    Compute the total core area of all patches in the landscape at a specified
+    depth (default depth = 0). This sums core area over every patch, regardless
+    of class.
 """
-    total_core_area(l::Landscape, depth)
-
-Total core area of all patches in the landscape at a specified depth.
-"""
-function total_core_area(l::Landscape, depth)
-
-    # Getting all unique patch IDs
-    patch_ids = unique(patches(l))
-
-    # Initializing total core area
-    total_core = 0.0
-
-    # Summing core areas of all patches
-    for pid in patch_ids
-        if pid != 0
+    function total_core_area(l::Landscape, depth::Int=0)
+        patch_ids = unique(patches(l))
+        total_core = 0.0
+        for pid in patch_ids
+            if pid == 0
+                continue
+            end
             total_core += core_area(l, pid, depth)
         end
-    end
-    
-    return total_core
-end
+        return total_core
+    end 
 
-@testitem "We can measure the total core area" begin
+@testitem "We can measure the total core area for the landscape" begin
     A = [
         0 0 0 0 0 0;
         0 1 1 1 1 0;
@@ -42,30 +38,29 @@ end
     @test total_core_area(L, 1) == 7
 end
 
-"""
-    total_core_area(l::Landscape, depth)
 
-Total core area of all patches in the landscape at a specified depth.
-"""
-function total_core_area(l::Landscape, depth)
 
-    # Getting all unique patch IDs
-    patch_ids = unique(patches(l))
-
-    # Initializing total core area
-    total_core = 0.0
-
-    # Summing core areas of all patches
-    for pid in patch_ids
-        if pid != 0
-            total_core += core_area(l, pid, depth)
+    function total_core_area(l::Landscape, class_val::Integer, depth::Int=0)
+        patch_ids = unique(patches(l))
+        total_core = 0.0
+        for pid in patch_ids
+            if pid == 0
+                 continue
+            end
+            # find a representative cell for this patch
+            pos = findfirst(==(pid), patches(l))
+            if pos === nothing
+                 continue
+            end
+            if l[pos] == class_val
+                total_core += core_area(l, pid, depth)
+            end
         end
+        return total_core
     end
-    
-    return total_core
-end
 
-@testitem "We can measure the total core area" begin
+
+ @testitem "We can measure the total core area for a class" begin
     A = [
         0 0 0 0 0 0;
         0 1 1 1 1 0;
@@ -83,5 +78,5 @@ end
     ]
     L = Landscape(A)
     patches!(L)
-    @test total_core_area(L, 1) == 7
-end
+    @test total_core_area(L, 1, 1) == 6
+        end
