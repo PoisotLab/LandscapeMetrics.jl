@@ -1,9 +1,11 @@
+"""
+    disjunct_core_area_density(l::Landscape, class_id, depth)
 
+Disjunct core area density for a given class in the landscape.
+"""
 function disjunct_core_area_density(l::Landscape, class_id, depth)
-    nodca = number_of_disjunct_core_areas(l, class_id, depth)
-     
-    return nodca / totalarea(l)
     
+    return number_of_disjunct_core_areas(l, class_id, depth) / totalarea(l)
 end
 
 @testitem "We can compute the disjunct core area density for a class" begin
