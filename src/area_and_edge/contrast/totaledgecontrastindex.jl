@@ -73,3 +73,20 @@ end
     teci_class2 = total_edge_contrast_index(L, 1, W, class_order)
     @test teci_class2 == (2.5 + 6 + 7)/22 * 100.0
 end
+
+"""
+    total_edge_contrast_index(l::Landscape, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
+
+Compute the Total Edge Contrast Index (TECI) for all classes in the landscape.
+"""
+
+function total_edge_contrast_index(l::Landscape, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
+    teci_by_class = Dict{Any, Float64}()
+    unique_classes = unique(l[.!background(l)])
+    for class_id in unique_classes
+        teci_by_class[class_id] = total_edge_contrast_index(l, class_id, W, class_order; outside_key=outside_key)
+    end
+    teci_all_classes = sum(values(teci_by_class))
+    return teci_all_classes / length(teci_by_class) * 100
+end
+
