@@ -19,3 +19,11 @@ end
     L = Landscape(A)
     @test edgedensity(L) == 5/18
 end
+
+"""
+    edgedensity(l::Landscape)
+Returns the edge density of the landscape.
+"""
+function edgedensity(l::Landscape)
+    return totaledge(l) / totalarea(l)
+end
