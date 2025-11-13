@@ -66,3 +66,30 @@ end
     L = Landscape(A)
     @test totaledge(L, 1) == 24
 end
+
+"""
+    totaledge(l::Landscape)
+
+Total length of edge in the landscape.
+"""
+
+function totaledge(l::Landscape)
+    unique_classes = unique(values(l))
+    total_edge_length = 0
+    for class_val in unique_classes
+        total_edge_length += totaledge(l, class_val)
+    end
+    return total_edge_length
+    
+end
+
+@testitem "We can measure the total edge of a landscape" begin
+    A = [
+        1 1 1 2 1 2;
+        1 2 1 2 1 2;
+        1 1 1 2 1 2
+    ]
+    L = Landscape(A)
+    @test totaledge(L) == 44
+end
+
