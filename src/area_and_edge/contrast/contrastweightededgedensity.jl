@@ -157,3 +157,42 @@ end
     eci = class_edge_contrast_index(L, 1, W, class_order)
     @test eci == ((2.5 + 6 + 7) / 30)
 end
+
+"""
+    class_edge_contrast_index(l::Landscape, class_id, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
+
+Compute the edge contrast index for all patches of the landscape.
+
+"""
+
+function class_edge_contrast_index(l::Landscape, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
+
+    eci_by_class = Dict{Any, Float64}()
+    unique_classes = unique(l[.!background(l)])
+    for class_id in unique_classes
+        eci_by_class[class_id] = class_edge_contrast_index(l, class_id, W, class_order; outside_key=outside_key)
+    end
+
+    return eci_by_class
+
+end
+
+@testitem "We can compute the edge contrast index for a patch" begin
+    A = [
+        0 0 0 2 2 2;
+        1 1 1 1 2 2;
+        3 3 3 2 2 2;
+        1 1 1 1 2 2;
+        1 1 1 1 0 0
+    ]
+    L = Landscape(A)
+    patches!(L)
+    W = [0.0 0.5 1.0;
+         0.5 0.0 0.8;
+         1.0 0.8 0.0] # classes: 1,2,3
+    class_order = [1,2,3]
+    eci = class_edge_contrast_index(L, W, class_order)
+    @test eci == ((2.5 + 6 + 7) / 30)
+end
+
+
