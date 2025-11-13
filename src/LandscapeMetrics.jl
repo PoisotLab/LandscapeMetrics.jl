@@ -47,12 +47,6 @@ export largestpatchindex
 include("area_and_edge/radiusofgyration.jl")
 export radiusofgyration
 
-include("area_and_edge/totaledge.jl")
-export totaledge
-
-include("area_and_edge/edgedensity.jl")
-export edgedensity
-
 # Shape
 include("shape/paratio.jl")
 export paratio, perimeterarearatio
@@ -60,6 +54,17 @@ export shapeindex
 
 include("shape/fractal.jl")
 export fractaldimensionindex
+
+# Contrast
+include("area_and_edge/contrast/edgecontrastindex.jl")
+export perimeter_split_by_class
+export edgecontrastindex
+include("area_and_edge/contrast/contrastweightededgedensity.jl")
+export edge_contrast_density
+export class_edge_contrast_index
+
+include("area_and_edge/contrast/totaledgecontrastindex.jl")
+export total_edge_contrast_index
 
 end # module LandscapeMetrics
 
