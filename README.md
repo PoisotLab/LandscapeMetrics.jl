@@ -9,34 +9,29 @@ Tested: there are unit tests for the method implementation
 
 | Category | Type | Name | Implemented | Tested |
 |-----|----|---|:-:|:-:|
-| Area and egde | Patch | Area | ✅ | ✅ |
-| Area and egde | Patch | Perimeter | ✅ | ✅ |
-| Area and egde | Patch | Radius of gyration |  |  |
-| Area and egde | Class | Total class area | ✅  | ✅  |
-| Area and egde | Class | Percentage of landscape |  |  |
-| Area and egde | Class | Total class area | ✅  | ✅  |
-| Area and egde | Class | Percentage of landscape |  ✅ | ✅  |
-| Area and egde | Class | Total class area | ✅  | ✅  |
-| Area and egde | Class | Total edge |  |  |
-| Area and egde | Class | Edge Density|  |  |
-| Area and egde | Landscape | Total area| ✅  | ✅  |
-| Area and egde | Landscape | Largest patch index|  |  |
-| Area and egde | Landscape | Total area| ✅  | ✅  |
-| Area and egde | Landscape | Total edge |  |  |
-| Area and egde | Landscape | Edge density |  |  |
-| Shape | Patch | Perimeter-area ratio | ✅  | ✅  |
-| Shape | Patch | Shape index| ✅  | ✅  |
-| Shape | Patch | Fractal dimension index| ✅  | ✅  |
-| Shape | Patch | Related circumscribing index|   |   |
-| Shape | Patch | Contiguity index|   |   |
-| Shape | Class | Perimeter-area fractal dimension|   |   |
-| Shape | Landscape | Perimeter-area fractal dimension|   |   |
-| Corea area | Patch | Core area|   |   |
-| Corea area | Patch | Number of core areas|   |   |
-| Corea area | Patch | Core area index|   |   |
-| Corea area | Patch | Toal core area |   |   |
-| Corea area | Patch | Toal core area |   |   |
-| Corea area | Patch | Core area percentage of landscape|   |   |
-| Corea area | Landscape | Total core area|   |   |
-| Corea area | Landscape | Number of disjunct core areas|   |   |
-| Corea area | Landscape | Disjunct core area density|   |   |
+| Area and Edge | Patch | Area | ✅ | ✅ |
+| Area and Edge | Patch | Perimeter | ✅ | ✅ |
+| Area and Edge | Patch | Radius of Gyration | ✅ | ✅ |
+| Area and Edge | Class | Total Class Area | ✅ | ✅ |
+| Area and Edge | Class | Percentage of Landscape | ✅ | ✅ |
+| Area and Edge | Class | Total class area | ✅ | ✅ |
+| Area and Edge | Class | Total Edge | ✅ | ✅ |
+| Area and Edge | Class | Edge Density|  |  |
+| Area and Edge | Landscape | Largest Patch Index | ✅ | ✅ |
+| Shape | Patch | Perimeter-Area Ratio | ✅ | ✅ |
+| Shape | Patch | Shape Index | ✅ | ✅ |
+| Shape | Patch | Fractal Dimension Index | ✅ | ✅ |
+| Shape | Patch | Related Circumscribing Circle|   |   |
+| Shape | Patch | Contiguity Index |   |   |
+| Shape | Class | Perimeter-Area Fractal Dimension |   |   |
+| Core Area | Patch | Core Area |   |   |
+| Core Area | Patch | Number of Core Areas |   |   |
+| Core Area | Patch | Core Area Index |   |   |
+| Core Area | Patch | Total Core Area |   |   |
+| Core Area | Patch | Core Area Percentage of Landscape |   |   |
+| Core Area | Landscape | Number of Disjunct Core Areas |   |   |
+| Core Area | Landscape | Disjunct Core Area Density |   |   |
+| Contrast | Patch | Edge Contrast Index |   |   |
+| Contrast | Class | Contrast-Weighted Edge Density |   |   |
+| Contrast | Class | Total Edge Contrast Index |   |   |
+
