@@ -1,3 +1,10 @@
+"""
+    total_edge_contrast_index(l::Landscape, class_id, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
+
+Compute the Total Edge Contrast Index (TECI) for a specified class in the landscape.
+"""
+
+
 function total_edge_contrast_index(l::Landscape, class_id, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
     # Get total edge length and lengths by neighboring patch/class
     total_length, neighbor_lengths_by_patch = perimeter_split_by_class_allpatches(l, class_id; outside_key=outside_key)
