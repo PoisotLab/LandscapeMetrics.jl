@@ -26,13 +26,16 @@ Tested: there are unit tests for the method implementation
 | Shape | Patch | Related Circumscribing Circle| ✅ |   |
 | Shape | Patch | Contiguity Index | ✅ | ✅ |
 | Shape | Class | Perimeter-Area Fractal Dimension | ✅ | ✅ |
-| Core Area | Patch | Core Area |   |   |
-| Core Area | Patch | Number of Core Areas |   |   |
-| Core Area | Patch | Core Area Index |   |   |
-| Core Area | Patch | Total Core Area |   |   |
-| Core Area | Patch | Core Area Percentage of Landscape |   |   |
-| Core Area | Landscape | Number of Disjunct Core Areas |   |   |
-| Core Area | Landscape | Disjunct Core Area Density |   |   |
+| Core Area | Patch | Core Area | ✅ | ✅ |
+| Core Area | Patch | Number of Core Areas | ✅ | ✅ |
+| Core Area | Patch | Core Area Index | ✅ | ✅ |
+| Core Area | Class | Total Core Area | ✅ | ✅ |
+| Core Area | Class | Core Area Percentage of Landscape | ✅ | ✅ |
+| Core Area | Class | Number of Disjunct Core Areas | ✅ | ✅ |
+| Core Area | Class | Disjunct Core Area Density | ✅ | ✅ |
+| Core Area | Landscape | Total Core Area | ✅ | ✅ |
+| Core Area | Landscape | Number of Disjunct Core Areas | ✅ | ✅ |
+| Core Area | Landscape | Disjunct Core Area Density | ✅ | ✅ |
 | Contrast | Patch | Edge Contrast Index |   |   |
 | Contrast | Class | Contrast-Weighted Edge Density |   |   |
 | Contrast | Class | Total Edge Contrast Index |   |   |
