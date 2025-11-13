@@ -8,7 +8,6 @@ end
 
 
 """
-
     distance(p1::Tuple{Float64, Float64}, p2::Tuple{Float64, Float64})
 
     Computes the Euclidian distance between two points.
