@@ -70,7 +70,7 @@ export count_core_areas
 export flood_fill
 export compute_core_mask
 
-include("core_area/numberofdisjunctcorearea.jl")
+include("core_area/numberofdisjunctcoreareas.jl")
 export number_of_disjunct_core_areas
 
 
