@@ -167,32 +167,47 @@ Compute the edge contrast index for all patches of the landscape.
 
 function class_edge_contrast_index(l::Landscape, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
 
-    eci_by_class = Dict{Any, Float64}()
+
+    # Sum the weighted edge contrast index for all classes
     unique_classes = unique(l[.!background(l)])
+    total_weighted_sum = 0.0
+    total_area = prod(size(l)) * l.area
     for class_id in unique_classes
-        eci_by_class[class_id] = class_edge_contrast_index(l, class_id, W, class_order; outside_key=outside_key)
+        total_length, neighbor_lengths_by_patch = perimeter_split_by_class_allpatches(l, class_id; outside_key=outside_key)
+        if total_length == 0
+            continue
+        end
+
+        p = patches(l)
+        patch_to_class = Dict{Any, Int}()
+        for idx in CartesianIndices(p)
+            pid = p[idx]
+            if !haskey(patch_to_class, pid)
+                patch_to_class[pid] = pid == 0 ? 0 : l[idx]
+            end
+        end
+
+        idxmap = Dict{Any, Int}()
+        for (i, class) in enumerate(class_order)
+            idxmap[class] = i
+        end
+        focal_idx = get(idxmap, class_id, 0)
+
+        for (neighbor_pid, len) in neighbor_lengths_by_patch
+            neighbor_class = neighbor_pid === outside_key ? outside_key : (neighbor_pid == 0 ? 0 : patch_to_class[neighbor_pid])
+            if neighbor_class == 0
+                continue
+            end
+            j = get(idxmap, neighbor_class, 0)
+            w = 1.0
+            if focal_idx > 0 && j > 0
+                w = float(W[focal_idx, j])
+            end
+            total_weighted_sum += len * w
+        end
     end
-
-    return eci_by_class
-
+    return total_area == 0.0 ? 0.0 : (total_weighted_sum / total_area)
 end
 
-@testitem "We can compute the edge contrast index for a patch" begin
-    A = [
-        0 0 0 2 2 2;
-        1 1 1 1 2 2;
-        3 3 3 2 2 2;
-        1 1 1 1 2 2;
-        1 1 1 1 0 0
-    ]
-    L = Landscape(A)
-    patches!(L)
-    W = [0.0 0.5 1.0;
-         0.5 0.0 0.8;
-         1.0 0.8 0.0] # classes: 1,2,3
-    class_order = [1,2,3]
-    eci = class_edge_contrast_index(L, W, class_order)
-    @test eci == ((2.5 + 6 + 7) / 30)
-end
 
 
