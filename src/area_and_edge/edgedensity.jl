@@ -1,12 +1,12 @@
 """
    edgedensity(l::Landscape)
 
-Returns the edge density of the landscape, defined as the total edge length divided by the total area.
+Returns the edge density of each class in the landscape, defined as the total edge length of a class divided by the total area.
 
 """
 
 function edgedensity(l::Landscape)
-    return totaledge(l) / totalarea(l)
+    return totaledge(l, "class") / totalarea(l)
 end
 
 
