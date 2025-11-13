@@ -36,9 +36,11 @@ Tested: there are unit tests for the method implementation
 | Core Area | Landscape | Total Core Area | ✅ | ✅ |
 | Core Area | Landscape | Number of Disjunct Core Areas | ✅ | ✅ |
 | Core Area | Landscape | Disjunct Core Area Density | ✅ | ✅ |
-| Contrast | Patch | Edge Contrast Index |   |   |
-| Contrast | Class | Contrast-Weighted Edge Density |   |   |
-| Contrast | Class | Total Edge Contrast Index |   |   |
+| Contrast | Patch | Edge Contrast Index | ✅ | ✅ |
+| Contrast | Class | Contrast-Weighted Edge Density | ✅ | ✅ |
+| Contrast | Class | Total Edge Contrast Index | ✅ | ✅ |
+| Contrast | Landscape | Contrast-Weighted Edge Density | ✅ |  |
+| Contrast | Landscape | Total Edge Contrast Index | ✅ |  |
 | Aggregation | Patch | Euclidian Nearest-Neighbor Distance |   |   |  
 | Aggregation | Patch | Proximity Index |   |   |
 | Aggregation | Patch | Similarity Index |   |   |
