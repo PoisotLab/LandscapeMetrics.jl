@@ -1,14 +1,41 @@
-function count_core_areas(core_mask)
+"""
+    count_core_areas(A::Matrix{Int}, depth::Int=0)
+
+Count the number of core areas in a binary matrix A after eroding it by the specified depth.
+
+"""
+
+
+function count_core_areas(l::Landscape, patch, depth::Int=0)
+
+    # Create a mask for the specified patch
+    core_mask = patches(l) .== patch
+
+    # Erode the core mask by the specified depth
     nrows, ncols = size(core_mask)
+    for _ in 1:depth
+        up    = vcat(falses(1, ncols), core_mask[1:end-1, :])
+        down  = vcat(core_mask[2:end, :], falses(1, ncols))
+        left  = hcat(falses(nrows, 1), core_mask[:, 1:end-1])
+        right = hcat(core_mask[:, 2:end], falses(nrows, 1))
+        core_mask = core_mask .& up .& down .& left .& right
+    end
+
+    # Now we need to count the number of connected components in core_mask
     labels = zeros(Int, nrows, ncols)
     label = 0
 
-    function flood_fill(i, j, label)
+    """
+        flood_fill(i, j, lab)
+
+        Flood fill algorithm to label connected components in the core_mask.
+    """
+    function flood_fill(i, j, lab)
         stack = [(i, j)]
         while !isempty(stack)
             x, y = pop!(stack)
             if 1 <= x <= nrows && 1 <= y <= ncols && core_mask[x, y] && labels[x, y] == 0
-                labels[x, y] = label
+                labels[x, y] = lab
                 for (dx, dy) in ((-1,0), (1,0), (0,-1), (0,1))
                     push!(stack, (x + dx, y + dy))
                 end
@@ -27,47 +54,17 @@ function count_core_areas(core_mask)
     return label
 end
 
-
-function compute_core_mask(A::Matrix{Int}, depth::Int)
-    core_mask = A .== 1
-    for d in 1:depth
-        boundary = falses(size(core_mask))
-        for i in 1:size(core_mask, 1)
-            for j in 1:size(core_mask, 2)
-                if core_mask[i, j]
-                    for (di, dj) in ((-1,0), (1,0), (0,-1), (0,1))
-                        ni, nj = i+di, j+dj
-                        if 1 <= ni <= size(core_mask,1) && 1 <= nj <= size(core_mask,2)
-                            if !core_mask[ni, nj]
-                                boundary[i, j] = true
-                            end
-                        else
-                            boundary[i, j] = true
-                        end
-                    end
-                end
-            end
-        end
-        core_mask[boundary] .= false
-    end
-    return core_mask
-end
-
 @testitem "Core area is positive for multi-cell patch with depth 1" begin
     A = [
-        1 1 1 0 1 1 1;
-        1 1 1 0 1 1 1;
-        1 1 1 1 1 1 1;
-        0 0 0 0 0 0 0 
+        1 1 1 0 0 0 0;
+        1 1 1 0 2 2 2;
+        1 1 1 1 1 1 2;
+        0 0 0 1 1 1 2; 
+        0 0 0 1 1 1 0;
+        0 0 0 0 0 0 0;
+        0 0 0 0 0 0 0
     ]
-    core_mask = compute_core_mask(A, 1)
-    ncore = count_core_areas(core_mask)
-    @test ncore == 2
+    L = Landscape(A)
+
+    @test count_core_areas(L, 2, 1) == 2
 end
-
-
-
-
-
-
-
