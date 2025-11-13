@@ -1,24 +1,27 @@
 function contig_index(l::Landscape, patch, template)
+
+    # Create a mask for the given patch
     patch_mask = patches(l) .== patch
+
     # Keep all values in the patch, set others to zero
     patch_grid = zeros(Int, size(l))
+
+    # Fill in the values for the patch
     patch_grid[patch_mask] .= l.grid[patch_mask]
-    println("patch_grid:\n", patch_grid)
+
+    # Get the contiguity values for the given template
     contig_vals = contiguityvalue(patch_grid, template)
-    println("contig_vals:\n", contig_vals)
+
+    # Get the cells that belong to the patch
     patch_cells = findall(patches(l) .== patch)
-    println("patch_cells: ", patch_cells)
+
+    # Calculate the contiguity index
     sum_vals = sum(contig_vals[patch_cells])
-    println("sum_vals: ", sum_vals)
     n_cells = length(patch_cells)
-    println("n_cells: ", n_cells)
     avg_val = sum_vals / n_cells
-    println("avg_val: ", avg_val)
     template_sum = sum(template)
-    println("template_sum: ", template_sum)
-    result = (avg_val - 1) / (template_sum)
-    println("final result: ", result)
-    return result
+   
+    return (avg_val - 1) / (template_sum)
 end
 
 @testitem "We can compute the contiguity index of a patch" begin
