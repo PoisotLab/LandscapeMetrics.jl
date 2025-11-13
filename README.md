@@ -14,10 +14,13 @@ Tested: there are unit tests for the method implementation
 | Area and Edge | Patch | Radius of Gyration | ✅ | ✅ |
 | Area and Edge | Class | Total Class Area | ✅ | ✅ |
 | Area and Edge | Class | Percentage of Landscape | ✅ | ✅ |
+| Area and Edge | Landscape | Largest Patch Index | ✅ | ✅ |
 | Area and Edge | Class | Total class area | ✅ | ✅ |
 | Area and Edge | Class | Total Edge | ✅ | ✅ |
-| Area and Edge | Class | Edge Density|  |  |
-| Area and Edge | Landscape | Largest Patch Index | ✅ | ✅ |
+| Area and Edge | Class | Edge Density | ✅ | ✅ |
+| Area and Edge | Landscape | Total Edge | ✅ | ✅ |
+| Area and Edge | Landscape | Edge Density | ✅ | ✅ |
+
 | Shape | Patch | Perimeter-Area Ratio | ✅ | ✅ |
 | Shape | Patch | Shape Index | ✅ | ✅ |
 | Shape | Patch | Fractal Dimension Index | ✅ | ✅ |
