@@ -70,5 +70,9 @@ export count_core_areas
 export flood_fill
 export compute_core_mask
 
+include("core_area/numberofdisjunctcorearea.jl")
+export number_of_disjunct_core_areas
+
+
 end # module LandscapeMetrics
 
