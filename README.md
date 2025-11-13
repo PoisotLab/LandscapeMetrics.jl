@@ -24,8 +24,8 @@ Tested: there are unit tests for the method implementation
 | Shape | Patch | Shape Index | ✅ | ✅ |
 | Shape | Patch | Fractal Dimension Index | ✅ | ✅ |
 | Shape | Patch | Related Circumscribing Circle| ✅ |   |
-| Shape | Patch | Contiguity Index | ✅ |   |
-| Shape | Class | Perimeter-Area Fractal Dimension | ✅ |   |
+| Shape | Patch | Contiguity Index | ✅ | ✅ |
+| Shape | Class | Perimeter-Area Fractal Dimension | ✅ | ✅ |
 | Core Area | Patch | Core Area |   |   |
 | Core Area | Patch | Number of Core Areas |   |   |
 | Core Area | Patch | Core Area Index |   |   |
