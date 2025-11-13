@@ -1,3 +1,11 @@
+"""
+    perimeter_split_by_class_allpatches(l::Landscape, class_id; outside_key = :boundary)
+
+Compute the total perimeter length of all patches of a given class,
+
+"""
+
+
 function perimeter_split_by_class_allpatches(l::Landscape, class_id; outside_key = :boundary)
 
     p = patches(l)
@@ -76,6 +84,12 @@ end
     @test by_class[3] == 3.0
 end
 
+"""
+    class_edge_contrast_index(l::Landscape, class_id, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
+
+Compute the edge contrast index for all patches of a given class in the landscape.
+
+"""
 function class_edge_contrast_index(l::Landscape, class_id, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
 
     total_length, neighbor_lengths_by_patch = perimeter_split_by_class_allpatches(l, class_id; outside_key=outside_key)
