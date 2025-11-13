@@ -50,6 +50,10 @@ export radiusofgyration
 include("area_and_edge/edgedensity.jl")
 export edgedensity
 
+include("area_and_edge/totaledge.jl")
+export totaledge
+
+
 # Shape
 include("shape/paratio.jl")
 export paratio, perimeterarearatio

@@ -5,8 +5,8 @@ Returns the edge density of each class in the landscape, defined as the total ed
 
 """
 
-function edgedensity(l::Landscape)
-    return totaledge(l, "class") / totalarea(l)
+function edgedensity(l::Landscape, class_val)
+    return totaledge(l, class_val) / totalarea(l)
 end
 
 
