@@ -1,8 +1,18 @@
+"""
+    core_area_percentage(l::Landscape, depth)
 
+Percentage of the landscape that is core area, given a specified edge depth.
+"""
 
 function core_area_percentage(l::Landscape, depth)
+
+    # Get all patch ids
     patch_ids = unique(patches(l))
+
+    # Compute total core area
     total_core = 0.0
+    
+    # Sum core area for each patch
     for pid in patch_ids
         if pid != 0
             total_core += core_area(l, pid, depth)
