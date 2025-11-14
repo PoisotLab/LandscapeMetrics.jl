@@ -1,3 +1,10 @@
+"""
+    core_area_index(l::Landscape, patch, depth)
+
+Core area index (%) of a given patch in the landscape at a specified depth.
+
+"""
+
 function core_area_index(l::Landscape, patch, depth)
  
     return core_area(l, patch, depth) / area(l, patch) * 100.0

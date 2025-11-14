@@ -67,8 +67,7 @@ export total_core_area
 
 include("core_area/Ncore.jl")
 export count_core_areas
-export flood_fill
-export compute_core_mask
+
 
 end # module LandscapeMetrics
 
