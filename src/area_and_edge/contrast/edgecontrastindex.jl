@@ -1,3 +1,10 @@
+"""
+    perimeter_split_by_class(l::Landscape, patch; outside_key = :boundary)
+
+Compute the perimeter of a given patch in the landscape, splitted by the classes of neighboring patches.
+
+"""
+
 function perimeter_split_by_class(l::Landscape, patch; outside_key = :boundary)
 
     p = patches(l)
@@ -53,6 +60,13 @@ end
     @test by_class[1] == 2.0
     @test by_class[3] == 3.0
 end
+
+"""
+    edgecontrastindex(l::Landscape, patch, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
+
+Compute the edge contrast index for a given patch in the landscape `l`, using the weight matrix `W` and the specified `class_order`.
+
+"""
 
 function edgecontrastindex(l::Landscape, patch, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
 
