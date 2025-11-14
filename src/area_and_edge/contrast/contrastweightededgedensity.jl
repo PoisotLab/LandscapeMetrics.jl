@@ -1,3 +1,11 @@
+"""
+    perimeter_split_by_class_allpatches(l::Landscape, class_id; outside_key = :boundary)
+
+Compute the total perimeter length of all patches of a given class,
+
+"""
+
+
 function perimeter_split_by_class_allpatches(l::Landscape, class_id; outside_key = :boundary)
 
     p = patches(l)
@@ -76,6 +84,12 @@ end
     @test by_class[3] == 3.0
 end
 
+"""
+    class_edge_contrast_index(l::Landscape, class_id, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
+
+Compute the edge contrast index for all patches of a given class in the landscape.
+
+"""
 function class_edge_contrast_index(l::Landscape, class_id, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
 
     total_length, neighbor_lengths_by_patch = perimeter_split_by_class_allpatches(l, class_id; outside_key=outside_key)
@@ -143,3 +157,57 @@ end
     eci = class_edge_contrast_index(L, 1, W, class_order)
     @test eci == ((2.5 + 6 + 7) / 30)
 end
+
+"""
+    class_edge_contrast_index(l::Landscape, class_id, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
+
+Compute the edge contrast index for all patches of the landscape.
+
+"""
+
+function class_edge_contrast_index(l::Landscape, W::AbstractMatrix, class_order::AbstractVector; outside_key = :boundary)
+
+
+    # Sum the weighted edge contrast index for all classes
+    unique_classes = unique(l[.!background(l)])
+    total_weighted_sum = 0.0
+    total_area = prod(size(l)) * l.area
+    for class_id in unique_classes
+        total_length, neighbor_lengths_by_patch = perimeter_split_by_class_allpatches(l, class_id; outside_key=outside_key)
+        if total_length == 0
+            continue
+        end
+
+        p = patches(l)
+        patch_to_class = Dict{Any, Int}()
+        for idx in CartesianIndices(p)
+            pid = p[idx]
+            if !haskey(patch_to_class, pid)
+                patch_to_class[pid] = pid == 0 ? 0 : l[idx]
+            end
+        end
+
+        idxmap = Dict{Any, Int}()
+        for (i, class) in enumerate(class_order)
+            idxmap[class] = i
+        end
+        focal_idx = get(idxmap, class_id, 0)
+
+        for (neighbor_pid, len) in neighbor_lengths_by_patch
+            neighbor_class = neighbor_pid === outside_key ? outside_key : (neighbor_pid == 0 ? 0 : patch_to_class[neighbor_pid])
+            if neighbor_class == 0
+                continue
+            end
+            j = get(idxmap, neighbor_class, 0)
+            w = 1.0
+            if focal_idx > 0 && j > 0
+                w = float(W[focal_idx, j])
+            end
+            total_weighted_sum += len * w
+        end
+    end
+    return total_area == 0.0 ? 0.0 : (total_weighted_sum / total_area)
+end
+
+
+
