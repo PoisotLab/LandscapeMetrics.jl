@@ -1,3 +1,10 @@
+"""
+    core_area(l::Landscape, patch, depth)
+
+Core area of a patch in the landscape, defined as the area remaining
+after removing all edge cells up to the specified depth.
+"""
+
 function core_area(l::Landscape, patch, depth)
     
     # Making a mask with all the cells in the patch
