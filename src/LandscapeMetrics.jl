@@ -60,5 +60,26 @@ include("aggregation/euclidiannearestneighbourdistance.jl")
 export euclidian_nearest_neighbour
 export euclidian_nearest_neighbour_by_class
 
+include("aggregation/proximityindex.jl")
+export proximity_index
+
+include("aggregation/similarityindex.jl")
+export similarity_index
+
+include("aggregation/interspersionjuxtapositionindex.jl")  
+export interspersion_juxtaposition_index
+
+include("aggregation/percentageoflikeadjencies.jl")
+export percentageoflikeadjacencies
+
+include("aggregation/aggregationindex.jl")
+export aggregationindex
+
+include("aggregation/clumpinessindex.jl")
+export clumpinessindex
+
+include("aggregation/landscapeshapeindex.jl")
+export landscapeshapeindex
+
 end # module LandscapeMetrics
 
