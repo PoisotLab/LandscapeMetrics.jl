@@ -55,6 +55,4 @@ function clumpinessindex(l::Landscape, patch::Int)
     end
 
     return clumpy
-
-
 end
