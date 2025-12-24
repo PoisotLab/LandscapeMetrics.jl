@@ -18,45 +18,49 @@ function interspersion_juxtaposition_index(l::Landscape, patch::Int)
     # We find the coordinates of the given patch
     patch_coordinates = findall(isequal(patch), p)
 
-    # Check that the patch exists
-    if isempty(patch_coordinates)
-        error("patch id $patch not found in landscape")
-    end
+    # Get total edge length for the patch
+    total_edge_length = 0.0
 
-    # We create a dictionary to store the edge lengths for each unique edge type
-    edge_lengths = Dict{Int, Int}()
+    # Dictionary to hold edge lengths to each other patch type
+    edge_lengths = Dict{Int, Float64}()
 
-    # For each cell in the patch, we check its neighbors
-    vonneumann = [CartesianIndex(-1,0), CartesianIndex(0,1), CartesianIndex(0,-1), CartesianIndex(1,0)]
     for coordinate in patch_coordinates
-        neighbors = [coordinate + offset for offset in vonneumann if coordinate + offset in CartesianIndices(p)]
+        neighbors = neighboring_indices(l, coordinate)
         for neighbor in neighbors
             neighbor_patch = p[neighbor]
-            if neighbor_patch != patch
+            if neighbor_patch != patch && neighbor_patch != 0
+                total_edge_length += 1.0  # Assuming each edge has length 1
                 if haskey(edge_lengths, neighbor_patch)
-                    edge_lengths[neighbor_patch] += 1
+                    edge_lengths[neighbor_patch] += 1.0
                 else
-                    edge_lengths[neighbor_patch] = 1
+                    edge_lengths[neighbor_patch] = 1.0
                 end
             end
         end
     end
 
-    total_edge_length = sum(values(edge_lengths))
-    if total_edge_length == 0
+    # If there are no edges, return 0
+    if total_edge_length == 0.0
         return 0.0
     end
-    num_patch_types = length(keys(edge_lengths))
+
+    # Calculate IJI
+    sum_term = 0.0
+
+    # For each unique edge type, calculate the proportion and its contribution to the sum
+    for (other_patch, length) in edge_lengths
+        proportion = length / total_edge_length
+        sum_term += proportion * log(proportion)
+    end
+
+    # Calculate number of patch types excluding background
+    num_patch_types = length(unique(p)) - 1  # Exclude background (0)
     if num_patch_types <= 1
         return 0.0
     end
 
-    iji_sum = 0.0
-    for edge_length in values(edge_lengths)
-        proportion = edge_length / total_edge_length
-        iji_sum += proportion * log(proportion)
-    end
+    iji = (-sum_term / log(num_patch_types)) * 100.0
 
-    iji = (-1 * iji_sum) / log(num_patch_types) * 100.0
     return iji
 end
+

@@ -40,3 +40,34 @@ function landscapeshapeindex(l::Landscape, patch::Int)
 
     return lsi
 end
+
+
+function landscapeshapeindex(l::Landscape)
+
+    # We get the patches
+    p = patches(l)
+
+    # Get unique patch ids
+    patch_ids = unique(p)
+
+    # Total length of edge in landscape
+    total_edge_length = 0
+    vonneumann = [CartesianIndex(-1,0), CartesianIndex(0,1), CartesianIndex(0,-1), CartesianIndex(1,0)]
+    for patch_id in patch_ids
+        patch_coordinates = findall(isequal(patch_id), p)
+        for coordinate in patch_coordinates
+            neighbors = [coordinate + offset for offset in vonneumann if coordinate + offset in CartesianIndices(p)]
+            for neighbor in neighbors
+                if p[neighbor] != patch_id
+                    total_edge_length += 1
+                end
+            end
+        end
+    end
+
+    # Total landscape area
+    total_area = total_area(l)
+
+    # Calculate LSI
+    lsi = (total_edge_length) * 0.25 / (sqrt(total_area))
+end

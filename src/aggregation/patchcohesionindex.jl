@@ -45,3 +45,38 @@ function patchcohesionindex(l::Landscape, class::Int)
 
     return PCI
 end
+
+
+function patchcohesionindex(l::Landscape)
+
+    # We get the patches
+    p = patches(l)
+
+    # Get unique class ids
+    class_ids = unique(l)
+
+    # Sum of the perimeter of all patches in the landscape in terms of cells
+    total_perimeter = 0
+    vonneumann = [CartesianIndex(-1,0), CartesianIndex(0,1), CartesianIndex(0,-1), CartesianIndex(1,0)]
+    for class_id in class_ids
+        class_coordinates = findall(x -> l[x] == class_id, CartesianIndices(l))
+        for coordinate in class_coordinates
+            neighbors = [coordinate + offset for offset in vonneumann if coordinate + offset in CartesianIndices(p)]
+            for neighbor in neighbors
+                if p[neighbor] != class_id
+                    total_perimeter += 1
+                end
+            end
+        end
+    end
+   
+    # Sum of the areas of all patches in terms of cells
+    total_area = length(p)
+
+    # Calculate Z: total number of cells in the landscape
+    Z = length(p)
+
+    # Calculate the overall PCI
+    PCI = ((1 - (total_perimeter / (total_perimeter * sqrt(total_area))))/ (1 - (1 / sqrt(Z))))*100
+
+end
