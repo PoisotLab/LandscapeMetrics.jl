@@ -72,13 +72,16 @@ export shapeindex
 include("shape/fractal.jl")
 export fractaldimensionindex
 
-include("shape/contiguityindex.jl")
-export contig_index
-include("shape/relatedcircumscribingcircle.jl")
-export related_circumscribing_circle
-export patch_cell_corners
+# Contrast
+include("area_and_edge/contrast/edgecontrastindex.jl")
+export perimeter_split_by_class
+export edgecontrastindex
+include("area_and_edge/contrast/contrastweightededgedensity.jl")
+export edge_contrast_density
+export class_edge_contrast_index
 
-
+include("area_and_edge/contrast/totaledgecontrastindex.jl")
+export total_edge_contrast_index
 
 end # module LandscapeMetrics
 

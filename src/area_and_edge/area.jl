@@ -85,3 +85,6 @@ end
     @test classarea(L, 1) == count(A .== 1)
     @test classarea(L, 2) == count(A .== 2)
 end
+
+
+
