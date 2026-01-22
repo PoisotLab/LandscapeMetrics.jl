@@ -72,16 +72,31 @@ export shapeindex
 include("shape/fractal.jl")
 export fractaldimensionindex
 
-# Contrast
-include("area_and_edge/contrast/edgecontrastindex.jl")
-export perimeter_split_by_class
-export edgecontrastindex
-include("area_and_edge/contrast/contrastweightededgedensity.jl")
-export edge_contrast_density
-export class_edge_contrast_index
+# Aggregation
+include("aggregation/euclidiannearestneighbourdistance.jl")
+export euclidian_nearest_neighbour
+export euclidian_nearest_neighbour_by_class
 
-include("area_and_edge/contrast/totaledgecontrastindex.jl")
-export total_edge_contrast_index
+include("aggregation/proximityindex.jl")
+export proximity_index
+
+include("aggregation/similarityindex.jl")
+export similarity_index
+
+include("aggregation/interspersionjuxtapositionindex.jl")  
+export interspersion_juxtaposition_index
+
+include("aggregation/percentageoflikeadjencies.jl")
+export percentageoflikeadjacencies
+
+include("aggregation/aggregationindex.jl")
+export aggregationindex
+
+include("aggregation/clumpinessindex.jl")
+export clumpinessindex
+
+include("aggregation/landscapeshapeindex.jl")
+export landscapeshapeindex
 
 end # module LandscapeMetrics
 

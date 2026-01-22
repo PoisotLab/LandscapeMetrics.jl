@@ -1,9 +1,10 @@
 name = "LandscapeMetrics"
 uuid = "25862bd7-db54-4647-9101-56547424702b"
-authors = ["Timothée Poisot <timothee.poisot@umontreal.ca>"]
 version = "0.0.1"
+authors = ["Timothée Poisot <timothee.poisot@umontreal.ca>"]
 
 [deps]
+ColorSchemes = "35d6a980-a343-548e-a6ea-1d62b119f2f4"
 DelimitedFiles = "8bb1440f-4735-579b-a4ab-409b98df4dab"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
@@ -11,6 +12,7 @@ Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 TestItems = "1c621080-faea-4a02-84b6-bbd5e436b8fe"
 
 [compat]
+ColorSchemes = "3.31.0"
 DelimitedFiles = "1.9"
 Random = "1.11.0"
 StatsBase = "0.34"
