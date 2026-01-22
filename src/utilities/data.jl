@@ -35,3 +35,20 @@ end
     expected_exterior_background = 2 * sum(ext_size .* size(L)) - 4 * (ext_size^2)
     @test sum(background(L)) == expected_exterior_background
 end
+
+
+function valdavid(; exterior=0, kwargs...)
+    datapath = joinpath((dirname ∘ dirname)(pathof(LandscapeMetrics)), "data", "valdavid.dat")
+    grid = DelimitedFiles.readdlm(datapath, '\t', Int8)
+    if exterior > 0
+        # Remove rows
+        grid[1:exterior, :] .*= (-1)
+        grid[(end-exterior+1):end, :] .*= (-1)
+        # Remove columns, note that we have already switched some of the rows!
+        grid[(exterior+1):(end-exterior), 1:exterior] .*= (-1)
+        grid[(exterior+1):(end-exterior), (end-exterior+1):end] .*= (-1)
+    end
+    nd_value = typemax(eltype(grid))
+    L = Landscape(grid; nodata=nd_value, area=110.0 * 110.0, kwargs...)
+    return L
+end

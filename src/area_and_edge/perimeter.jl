@@ -57,7 +57,7 @@ end
     A = [
         1 1 1 2 2 2;
         1 1 1 2 2 2;
-        2 2 2 2 2 2
+        2 2 2 2 2 2;
     ]
     L = Landscape(A)
     @test perimeter(L, 2) == 10
@@ -85,4 +85,14 @@ end
     L = Landscape(A; nodata=2)
     patches!(L)
     @test perimeter(L, 1) == 16
+end
+
+@testitem "We can measure the perimeter of a patch" begin
+    A = [
+        1 1 1 3 3 3;
+        1 1 1 3 3 3;
+        3 3 3 3 3 3
+    ]
+    L = Landscape(A)
+    @test perimeter(L, 3) == 10
 end
