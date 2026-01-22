@@ -6,7 +6,7 @@ Returns the mean distance between each cell in the patch and the patch centroid.
 
 """
 
-function radiusofgyration(l::Landscape, patch)
+function radiusofgyration(l::Landscape, patch::Integer)
 
     # We get the patches
     p = patches(l)
