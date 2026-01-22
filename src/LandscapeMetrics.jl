@@ -4,6 +4,7 @@ using TestItems
 using Test
 using StatsBase
 import DelimitedFiles
+using Random
 
 # Patches, generic utilies, and overloads
 include("types.jl")
@@ -26,6 +27,22 @@ export patches!, patches
 include("utilities/cellcenters.jl")
 export cellcenters
 
+#Function to get the contiguity value of the cells
+include("utilities/contiguityvalue.jl")
+export contiguityvalue
+# Function to identify the minimum enclosing circle of a set of points
+include("utilities/welzlalgorithm.jl")
+export welzl_algorithm
+export minimum_enclosing_circle
+export Circle
+export is_point_in_circle
+export distance
+
+
+
+
+
+
 # Function to get the core areas
 include("utilities/core.jl")
 
@@ -47,13 +64,6 @@ export largestpatchindex
 include("area_and_edge/radiusofgyration.jl")
 export radiusofgyration
 
-include("area_and_edge/edgedensity.jl")
-export edgedensity
-
-include("area_and_edge/totaledge.jl")
-export totaledge
-
-
 # Shape
 include("shape/paratio.jl")
 export paratio, perimeterarearatio
@@ -61,6 +71,14 @@ export shapeindex
 
 include("shape/fractal.jl")
 export fractaldimensionindex
+
+include("shape/contiguityindex.jl")
+export contig_index
+include("shape/relatedcircumscribingcircle.jl")
+export related_circumscribing_circle
+export patch_cell_corners
+
+
 
 end # module LandscapeMetrics
 
