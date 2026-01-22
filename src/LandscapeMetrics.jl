@@ -4,6 +4,7 @@ using TestItems
 using Test
 using StatsBase
 import DelimitedFiles
+using Random
 
 # Patches, generic utilies, and overloads
 include("types.jl")
@@ -25,6 +26,22 @@ export patches!, patches
 # Function to get the center of the cells (in metres)
 include("utilities/cellcenters.jl")
 export cellcenters
+
+#Function to get the contiguity value of the cells
+include("utilities/contiguityvalue.jl")
+export contiguityvalue
+# Function to identify the minimum enclosing circle of a set of points
+include("utilities/welzlalgorithm.jl")
+export welzl_algorithm
+export minimum_enclosing_circle
+export Circle
+export is_point_in_circle
+export distance
+
+
+
+
+
 
 # Function to get the core areas
 include("utilities/core.jl")
