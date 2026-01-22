@@ -72,31 +72,27 @@ export shapeindex
 include("shape/fractal.jl")
 export fractaldimensionindex
 
-# Aggregation
-include("aggregation/euclidiannearestneighbourdistance.jl")
-export euclidian_nearest_neighbour
-export euclidian_nearest_neighbour_by_class
+# Core Area
+include("core_area/corearea.jl")
+export core_area
+    
+include("core_area/coreareaindex.jl")
+export core_area_index
 
-include("aggregation/proximityindex.jl")
-export proximity_index
+include("core_area/totalcorearea.jl")
+export total_core_area
 
-include("aggregation/similarityindex.jl")
-export similarity_index
+include("core_area/Ncore.jl")
+export count_core_areas
 
-include("aggregation/interspersionjuxtapositionindex.jl")  
-export interspersion_juxtaposition_index
+include("core_area/coreareapercentage.jl")
+export core_area_percentage
 
-include("aggregation/percentageoflikeadjencies.jl")
-export percentageoflikeadjacencies
+include("core_area/numberofdisjunctcorearea.jl")
+export number_of_disjunct_core_areas
 
-include("aggregation/aggregationindex.jl")
-export aggregationindex
-
-include("aggregation/clumpinessindex.jl")
-export clumpinessindex
-
-include("aggregation/landscapeshapeindex.jl")
-export landscapeshapeindex
+include("core_area/disjunctcoreareadensity.jl")
+export disjunct_core_area_density
 
 end # module LandscapeMetrics
 
