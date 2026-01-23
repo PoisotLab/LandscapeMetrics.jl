@@ -166,16 +166,16 @@ include("diversity/patchrichness.jl")
 export patchrichness
 
 include("diversity/shannondiversityindex.jl")
-export shannon_diversity_index
+export shannondiversityindex
 
 include("diversity/simpsondiversityindex.jl")
-export simpson_diversity_index
+export simpsondiversityindex
 
 include("diversity/relativepatchrichness.jl")
-export relative_patch_richness
+export relativepatchrichness
 
 include("diversity/patchrichnessdensity.jl")
-export patch_richness_density
+export patchrichnessdensity
 
 end # module LandscapeMetrics
 
