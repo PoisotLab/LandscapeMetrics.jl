@@ -167,6 +167,7 @@ export patchrichness
 
 include("diversity/shannondiversityindex.jl")
 export shannondiversityindex
+export shannonevennessindex
 
 include("diversity/simpsondiversityindex.jl")
 export simpsondiversityindex
