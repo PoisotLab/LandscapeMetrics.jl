@@ -64,6 +64,12 @@ export largestpatchindex
 include("area_and_edge/radiusofgyration.jl")
 export radiusofgyration
 
+include("area_and_edge/edgedensity.jl")
+export edgedensity
+
+include("area_and_edge/totaledge.jl")
+export totaledge
+
 # Shape
 include("shape/paratio.jl")
 export paratio, perimeterarearatio
@@ -71,6 +77,12 @@ export shapeindex
 
 include("shape/fractal.jl")
 export fractaldimensionindex
+
+include("shape/contiguityindex.jl")
+export contiguityindex
+
+include("shape/relatedcircumscribingcircle.jl")
+export relatedcircumscribingcircleindex
 
 # Core Area
 include("core_area/corearea.jl")
@@ -93,6 +105,54 @@ export number_of_disjunct_core_areas
 
 include("core_area/disjunctcoreareadensity.jl")
 export disjunct_core_area_density
+
+include("aggregation/aggregationindex.jl")
+export aggregation_index
+
+include("aggregation/clumpinessindex.jl")
+export clumpiness_index
+
+include("aggregation/connectanceindex.jl")
+export connectance_index
+
+include("aggregation/effectivemeshsize.jl")
+export effective_mesh_size
+
+include("aggregation/euclidiannearestneighbourdistance.jl")
+export euclidian_nearest_neighbour_distance
+
+include("aggregation/interspersionjuxtapositionindex.jl")
+export interspersion_juxtaposition_index
+
+include("aggregation/landscapedivisionindex.jl")
+export landscape_division_index
+
+include("aggregation/landscapeshapeindex.jl")
+export landscape_shape_index
+
+include("aggregation/normalizedlandscapeindex.jl")
+export normalized_landscape_index
+
+include("aggregation/numberofpatches.jl")
+export number_of_patches
+
+include("aggregation/patchcohesionindex.jl")
+export patch_cohesion_index
+
+include("aggregation/patchdensity.jl")
+export patch_density
+
+include("aggregation/percentageoflikeadjencies.jl")
+export percentage_of_like_adjacencies
+
+include("aggregation/proximityindex.jl")
+export proximity_index
+
+include("aggregation/similarityindex.jl")
+export similarity_index
+
+include("aggregation/splittingindex.jl")
+export splitting_index
 
 end # module LandscapeMetrics
 
