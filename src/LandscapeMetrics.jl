@@ -163,7 +163,7 @@ export splitting_index
 
 #Diversity
 include("diversity/patchrichness.jl")
-export patch_richness
+export patchrichness
 
 include("diversity/shannondiversityindex.jl")
 export shannon_diversity_index
