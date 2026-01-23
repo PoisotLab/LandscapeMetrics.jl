@@ -38,11 +38,6 @@ export Circle
 export is_point_in_circle
 export distance
 
-
-
-
-
-
 # Function to get the core areas
 include("utilities/core.jl")
 
@@ -77,6 +72,7 @@ export shapeindex
 
 include("shape/fractal.jl")
 export fractaldimensionindex
+export fractaldimension
 
 include("shape/contiguityindex.jl")
 export contiguityindex
@@ -106,6 +102,17 @@ export number_of_disjunct_core_areas
 include("core_area/disjunctcoreareadensity.jl")
 export disjunct_core_area_density
 
+# Contrast
+include("area_and_edge/contrast/contrastweightededgedensity.jl")
+export contrast_weighted_edge_density
+
+include("area_and_edge/contrast/edgecontrastindex.jl")
+export edge_contrast_index
+
+include("area_and_edge/contrast/totaledgecontrastindex.jl")
+export total_edge_contrast_index
+
+# Aggregation
 include("aggregation/aggregationindex.jl")
 export aggregation_index
 
@@ -153,6 +160,22 @@ export similarity_index
 
 include("aggregation/splittingindex.jl")
 export splitting_index
+
+#Diversity
+include("diversity/patchrichness.jl")
+export patch_richness
+
+include("diversity/shannondiversityindex.jl")
+export shannon_diversity_index
+
+include("diversity/simpsondiversityindex.jl")
+export simpson_diversity_index
+
+include("diversity/relativepatchrichness.jl")
+export relative_patch_richness
+
+include("diversity/patchrichnessdensity.jl")
+export patch_richness_density
 
 end # module LandscapeMetrics
 
