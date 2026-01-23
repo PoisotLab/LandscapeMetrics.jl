@@ -8,9 +8,22 @@ Calculate the patch richness of a landscape `l`, defined as the number of unique
 
 
 function patchrichness(l::Landscape)
-    unique_patch_types = Set{Int}()
-    for patch in l.patches
-        push!(unique_patch_types, patch.type)
+    unique_patch_types = Set{eltype(l)}()
+    for idx in eachindex(l)
+        if foreground(l)[idx]
+            push!(unique_patch_types, l[idx])
+        end
     end
     return length(unique_patch_types)
+end
+
+
+@testitem "We can measure the radius of gyration for a multi-cell patch" begin
+    A = [
+        2 1 2;
+        1 1 4;
+        2 3 2
+    ]
+    L = Landscape(A)
+    @test patchrichness(L) == 4
 end
