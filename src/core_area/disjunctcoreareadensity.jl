@@ -3,7 +3,7 @@
 
 Disjunct core area density for a given class in the landscape.
 """
-function disjunct_core_area_density(l::Landscape, class_id, depth)
+function disjunct_core_area_density(l::Landscape, class_id, depth::Int=0)
     
     return number_of_disjunct_core_areas(l, class_id, depth) / totalarea(l)
 end
@@ -34,7 +34,7 @@ end
 
 """
 
-function disjunct_core_area_density(l::Landscape, depth)
+function disjunct_core_area_density(l::Landscape, depth::Int=0)
     total_disjunct_core_areas = 0
     unique_patches = unique(patches(l))
     for patch in unique_patches
