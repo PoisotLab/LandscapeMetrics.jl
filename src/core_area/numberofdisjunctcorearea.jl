@@ -5,7 +5,7 @@
 Count the number of disjunct core areas for all patches of a given class in the landscape,
 
 """
-function number_of_disjunct_core_areas(l::Landscape, class_id, depth)
+function number_of_disjunct_core_areas(l::Landscape, class_id, depth::Int=0)
     p = patches(l)
 
     patch_ids = unique(patches(l))
@@ -52,10 +52,10 @@ end
 
     number_of_disjunct_core_areas(l::Landscape, depth)
 
-    Compute the number of disjunct core areas for all patches in the landscape.
+    Compute the number of disjunct core areas for all classes in the landscape.
 """
 
-function number_of_disjunct_core_areas(l::Landscape, depth)
+function number_of_disjunct_core_areas(l::Landscape, depth::Int=0)
     p = patches(l)
 
     patch_ids = unique(patches(l))
