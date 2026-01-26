@@ -29,3 +29,13 @@ function numberofpatches(l::Landscape)
 
     return length(unique_patches)
 end
+
+
+@testitem "We can measure the patch cohesion index" begin
+    A = [
+        1 1 1 2 1 2;
+        1 2 1 2 1 2;
+        1 1 1 2 1 2]
+    L = Landscape(A)
+    @test numberofpatches(L) == 5
+end

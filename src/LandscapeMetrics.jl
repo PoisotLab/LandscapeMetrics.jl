@@ -141,7 +141,7 @@ include("aggregation/normalizedlandscapeindex.jl")
 export normalized_landscape_index
 
 include("aggregation/numberofpatches.jl")
-export number_of_patches
+export numberofpatches
 
 include("aggregation/patchcohesionindex.jl")
 export patchcohesionindex
