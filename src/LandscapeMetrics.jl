@@ -114,7 +114,7 @@ export total_edge_contrast_index
 
 # Aggregation
 include("aggregation/aggregationindex.jl")
-export aggregation_index
+export aggregationindex
 
 include("aggregation/clumpinessindex.jl")
 export clumpiness_index
