@@ -123,7 +123,7 @@ include("aggregation/connectanceindex.jl")
 export connectance_index
 
 include("aggregation/effectivemeshsize.jl")
-export effective_mesh_size
+export effectivemeshsize
 
 include("aggregation/euclidiannearestneighbourdistance.jl")
 export euclidian_nearest_neighbour_distance
