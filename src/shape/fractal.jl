@@ -71,7 +71,7 @@ end
 """
     fractaldimension(l::Landscape)
 
-Retursn the fractal dimension for the landscape. This is measured as the `fractaldimensionindex` across all patches (except the background).
+Return the fractal dimension for the landscape. This is measured as the `fractaldimensionindex` across all patches (except the background).
 """
 function fractaldimension(l::Landscape)
 
