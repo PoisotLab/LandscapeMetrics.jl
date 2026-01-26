@@ -153,13 +153,13 @@ include("aggregation/percentageoflikeadjencies.jl")
 export percentageoflikeadjacencies
 
 include("aggregation/proximityindex.jl")
-export proximity_index
+export proximityindex
 
 include("aggregation/similarityindex.jl")
-export similarity_index
+export similarityindex
 
 include("aggregation/splittingindex.jl")
-export splitting_index
+export splittingindex
 
 #Diversity
 include("diversity/patchrichness.jl")

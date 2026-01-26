@@ -20,7 +20,7 @@ function splittingindex(l::Landscape, class::Int)
         error("class value $class not found in landscape")
     end
     # Calculate total area of the landscape
-    total_area = total_area(l)
+    total_area = totalarea(l)
 
     # Calculate sum of squared areas of all patches of the class
     sum_area_squared = 0
@@ -46,7 +46,7 @@ function splittingindex(l::Landscape)
 
     # Sum of the sum of squared areas of all patches in the landscape
     total_sum_area_squared = 0
-    total_area = total_area(l)
+    total_area = totalarea(l)
     for class_id in class_ids
         class_coordinates = findall(x -> l[x] == class_id, CartesianIndices(l))
         sum_area_squared = 0
@@ -62,4 +62,13 @@ function splittingindex(l::Landscape)
     split = (total_area^2) / total_sum_area_squared
     return split
 
+end
+
+@testitem "We can measure the landscape splitting index" begin
+    A = [
+        1 1 1 2 1 2;
+        1 2 1 2 1 2;
+        1 1 1 2 1 2]
+    L = Landscape(A)
+    @test round(splittingindex(L), digits=3) ≈ 3.522
 end
