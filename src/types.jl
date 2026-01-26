@@ -18,6 +18,9 @@ Base.ndims(l::Landscape) = ndims(l.grid)
 Base.getindex(l::Landscape, i...) = Base.getindex(l.grid, i...)
 Base.CartesianIndices(l::Landscape) = Base.CartesianIndices(l.grid)
 Base.values(l::Landscape) = l.grid
+Base.length(l::Landscape) = length(l.grid)
+Base.iterate(l::Landscape) = iterate(l.grid)
+Base.iterate(l::Landscape, state) = iterate(l.grid, state)
 
 function Landscape(m::Matrix{T}; nodata=typemax(T), area=1.0, kwargs...) where {T<:Integer}
     patches = fill(0, size(m))
