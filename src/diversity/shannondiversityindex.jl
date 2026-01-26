@@ -7,25 +7,21 @@
 function shannondiversityindex(l::Landscape)
 
 # Calculate the proportion of each patch type
-    patch_type_counts = Dict{Int, Int}()
-    unique_patch_types = Set{eltype(l)}()
+    patch_counts = Dict{eltype(l), Int}()
+    total_patches = 0
 
     for idx in eachindex(l)
         if foreground(l)[idx]
-            patch_type_counts[l[idx]] = get(patch_type_counts, l[idx], 0) + 1
+            patch_type = l[idx]
+            patch_counts[patch_type] = get(patch_counts, patch_type, 0) + 1
+            total_patches += 1
         end
     end
 
-    for idx in eachindex(l)
-        if foreground(l)[idx]
-            push!(unique_patch_types, l[idx])
-        end
-    end
-
-    # Calculate the Shannon diversity index
+    # Calculate Shannon diversity index
     H = 0.0
-    for count in values(patch_type_counts)
-        p_i = count / length(unique_patch_types)
+    for count in values(patch_counts)
+        p_i = count / total_patches
         H -= p_i * log(p_i)
     end
 
@@ -33,15 +29,21 @@ function shannondiversityindex(l::Landscape)
 
 end
 
-@testitem "We can measure the radius of gyration for a multi-cell patch" begin
+@testitem "We can measure Shannon diversity index" begin
     A = [
-        2 1 2;
-        1 1 4;
-        2 3 2
-    ]
+        1 1 1 2 1 2;
+        1 2 1 2 1 2;
+        1 1 1 2 1 2]
     L = Landscape(A)
-    @test shannonevennessindex(L) == 1.0
+
+    @test round(shannondiversityindex(L), digits=3) == 0.668
 end
+
+"""
+
+    shannonevennessindex(l::Landscape)
+
+"""
 
 
 function shannonevennessindex(l::Landscape)
@@ -50,4 +52,14 @@ function shannonevennessindex(l::Landscape)
     
     SHEI = H / log(L)
     return SHEI
+end
+
+@testitem "We can measure Shannon evenness index" begin
+    A = [
+        1 1 1 2 1 2;
+        1 2 1 2 1 2;
+        1 1 1 2 1 2]
+    L = Landscape(A)
+
+    @test round(shannonevennessindex(L), digits=3) == 0.964
 end
