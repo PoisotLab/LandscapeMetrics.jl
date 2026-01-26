@@ -20,10 +20,11 @@ end
 
 @testitem "We can measure the radius of gyration for a multi-cell patch" begin
     A = [
-        2 1 2;
-        1 1 4;
-        2 3 2
-    ]
+        1 1 1 2 1 2;
+        1 2 1 2 1 2;
+        1 1 1 2 1 2]
     L = Landscape(A)
-    @test patchrichness(L) == 4
+
+    L = Landscape(A)
+    @test patchrichness(L) == 2
 end
