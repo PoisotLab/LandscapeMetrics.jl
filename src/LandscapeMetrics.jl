@@ -150,7 +150,7 @@ include("aggregation/patchdensity.jl")
 export patch_density
 
 include("aggregation/percentageoflikeadjencies.jl")
-export percentage_of_like_adjacencies
+export percentageoflikeadjacencies
 
 include("aggregation/proximityindex.jl")
 export proximity_index
