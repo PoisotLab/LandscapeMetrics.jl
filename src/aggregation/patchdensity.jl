@@ -34,3 +34,13 @@ function patchdensity(l::Landscape)
 
     return PD
 end
+
+@testitem "We can measure the patch density" begin
+A = [
+        1 1 1 2 1 2;
+        1 2 1 2 1 2;
+        1 1 1 2 1 2]
+    L = Landscape(A)
+
+    @test patchdensity(L) == 5/18
+end
