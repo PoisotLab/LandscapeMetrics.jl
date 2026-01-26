@@ -171,6 +171,8 @@ export shannonevennessindex
 
 include("diversity/simpsondiversityindex.jl")
 export simpsondiversityindex
+export modifiedsimpsondiversityindex
+export modifiedsimpsonevennessindex
 
 include("diversity/relativepatchrichness.jl")
 export relativepatchrichness

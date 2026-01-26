@@ -6,56 +6,73 @@
 
 function simpsondiversityindex(l::Landscape)
 
-    # Calculate the proportion of each patch type
-    patch_type_counts = Dict{Int, Int}()
-    total_patches = length(l.patches)
+# Calculate the proportion of each patch type
+    patch_counts = Dict{eltype(l), Int}()
+    total_patches = 0
 
-    
-    # Sum of the proportion squared of each class type in the landscape
     for idx in eachindex(l)
         if foreground(l)[idx]
-            patch_type_counts[l[idx]] = get(patch_type_counts, l[idx], 0) + 1
+            patch_type = l[idx]
+            patch_counts[patch_type] = get(patch_counts, patch_type, 0) + 1
+            total_patches += 1
         end
     end
-    D = 0.0
-    for count in values(patch_type_counts)
-        p_i = count / length(patch_type_counts)
-        D += p_i^2
+
+    H = 0.0
+    for count in values(patch_counts)
+        p_i = count / total_patches
+        H += p_i^2
     end
-    
-    SIDI =1 - D
+
+    SIDI = 1 - H
     return SIDI
 
 end
 
-@testitem "We can measure the radius of gyration for a multi-cell patch" begin
+
+@testitem "We can measure Simpson diversity index" begin
     A = [
-        2 1 2;
-        1 1 4;
-        2 3 2
-    ]
+        1 1 1 2 1 2;
+        1 2 1 2 1 2;
+        1 1 1 2 1 2]
     L = Landscape(A)
-    @test simpsondiversityindex(L) == 1.0
+
+    @test round(simpsondiversityindex(L), digits=3) == 0.475
 end
+
 
 function modifiedsimpsondiversityindex(l::Landscape)
 
-    # Calculate the proportion of each patch type
-    patch_type_counts = Dict{Int, Int}()
-    total_patches = length(l.patches)
+  # Calculate the proportion of each patch type
+    patch_counts = Dict{eltype(l), Int}()
+    total_patches = 0
 
-    
-    # Sum of the proportion squared of each class type in the landscape
-    for patch in l.patches
-        patch_type_counts[patch.type] = get(patch_type_counts, patch.type, 0) + 1
+    for idx in eachindex(l)
+        if foreground(l)[idx]
+            patch_type = l[idx]
+            patch_counts[patch_type] = get(patch_counts, patch_type, 0) + 1
+            total_patches += 1
+        end
     end
-    D = 0.0
-    for count in values(patch_type_counts)
+
+    H = 0.0
+    for count in values(patch_counts)
         p_i = count / total_patches
-        D += p_i^2
+        H += p_i^2
     end
-    MSIDI = -log(D)
+
+    MSIDI = -log(H)
     return MSIDI
+end
+
+@testitem "We can measure Simpson diversity index" begin
+    A = [
+        1 1 1 2 1 2;
+        1 2 1 2 1 2;
+        1 1 1 2 1 2]
+    L = Landscape(A)
+
+    @test round(modifiedsimpsondiversityindex(L), digits=3) == 0.645
 end
 
 function modifiedsimpsonevennessindex(l::Landscape)
@@ -64,4 +81,14 @@ function modifiedsimpsonevennessindex(l::Landscape)
     
     MSEI = MSIDI / log(L)
     return MSEI
+end
+
+@testitem "We can measure Simpson evenness index" begin
+    A = [
+        1 1 1 2 1 2;
+        1 2 1 2 1 2;
+        1 1 1 2 1 2]
+    L = Landscape(A)
+
+    @test round(modifiedsimpsonevennessindex(L), digits=3) == 0.93
 end
