@@ -135,7 +135,7 @@ include("aggregation/landscapedivisionindex.jl")
 export landscape_division_index
 
 include("aggregation/landscapeshapeindex.jl")
-export landscape_shape_index
+export landscapeshapeindex
 
 include("aggregation/normalizedlandscapeindex.jl")
 export normalized_landscape_index
