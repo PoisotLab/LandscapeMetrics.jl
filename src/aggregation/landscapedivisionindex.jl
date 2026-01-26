@@ -20,7 +20,7 @@ function landscapedivisionindex(l::Landscape, class::Int)
     end
 
     # Calculate total area of the landscape
-    total_area = total_area(l)
+    total_area = totalarea(l)
     # Calculate sum of squared areas of all patches of the class
     sum_area_squared = 0
     patch_ids = unique(p[class_coordinates])
@@ -45,7 +45,7 @@ function landscapedivisionindex(l::Landscape)
 
     # Sum of the sum of squared areas of all patches in the landscape
     total_sum_area_squared = 0
-    total_area = total_area(l)
+    total_area = totalarea(l)
     for class_id in class_ids
         class_coordinates = findall(x -> l[x] == class_id, CartesianIndices(l))
         sum_area_squared = 0
@@ -61,4 +61,13 @@ function landscapedivisionindex(l::Landscape)
     # Calculate LDI
     ldi = 1 - (total_sum_area_squared / (total_area^2))
     return ldi
+end
+
+@testitem "We can measure the landscape division index" begin
+    A = [
+        1 1 1 2 1 2;
+        1 2 1 2 1 2;
+        1 1 1 2 1 2]
+    L = Landscape(A)
+    @test round(landscapedivisionindex(L), digits=3) ≈ 0.716
 end

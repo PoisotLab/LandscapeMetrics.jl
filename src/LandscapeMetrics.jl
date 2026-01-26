@@ -132,7 +132,7 @@ include("aggregation/interspersionjuxtapositionindex.jl")
 export interspersion_juxtaposition_index
 
 include("aggregation/landscapedivisionindex.jl")
-export landscape_division_index
+export landscapedivisionindex
 
 include("aggregation/landscapeshapeindex.jl")
 export landscapeshapeindex
