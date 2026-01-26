@@ -80,3 +80,15 @@ function patchcohesionindex(l::Landscape)
     PCI = ((1 - (total_perimeter / (total_perimeter * sqrt(total_area))))/ (1 - (1 / sqrt(Z))))*100
 
 end
+
+
+@testitem "We can measure the patch cohesion index" begin
+    A = [
+        1 1 1 2 1 2;
+        1 2 1 2 1 2;
+        1 1 1 2 1 2]
+    L = Landscape(A)
+    @test round(patchcohesionindex(L), digits=2) == 1.83
+end
+
+

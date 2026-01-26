@@ -65,7 +65,3 @@ end
     L = Landscape(A)
     @test round(landscapeshapeindex(L), digits=2) == 1.83
 end
-
-31/
-
-7.75/sqrt(18)
